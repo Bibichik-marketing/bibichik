@@ -77,3 +77,29 @@ html[lang="ko"] .hero h1{word-break:keep-all}
 .language-switch a{min-width:39px;padding-inline:9px}
 @media(max-width:960px) and (min-width:801px){.desktop-nav,.visit-cta{display:none}.mobile-toggle{display:block}}
 @media(max-width:480px){.mobile-language .language-switch{flex-wrap:wrap;white-space:normal}.mobile-language .language-switch a{min-width:58px}}
+@media(max-width:960px){
+  .mobile-sheet{width:min(360px,calc(100vw - 24px));max-width:none;height:100dvh;overflow-y:auto;padding:clamp(24px,6vw,40px)}
+  .mobile-sheet nav{gap:8px;margin-top:20px}
+  .mobile-sheet nav>a{display:flex;align-items:center;min-height:48px;padding:8px 4px;line-height:1.3}
+  .mobile-language{margin-top:12px;padding-top:18px;border-top:1px solid #a9c8bf}
+  .mobile-language .language-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;white-space:normal;border-radius:20px}
+  .mobile-language .language-switch a{min-width:0;width:100%;min-height:44px;padding:10px 6px}
+}
+@media(max-width:480px){
+  .header-inner{gap:12px}
+  .header-inner .brand{min-width:0}
+  .header-inner .brand img{width:min(135px,42vw)}
+  .mobile-toggle{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}
+}
+@media(max-width:800px){
+  html[lang="ko"] .hero h1,html[lang="ja"] .hero h1{font-size:clamp(36px,5.5vw,44px);line-height:1.25;max-width:100%;text-wrap:balance}
+  html[lang="ko"] .hero h1{overflow-wrap:anywhere}
+  html[lang="ja"] .hero h1{word-break:normal;line-break:strict}
+}
+@media(max-width:540px){
+  html[lang="ko"] .hero h1,html[lang="ja"] .hero h1{font-size:clamp(30px,8.5vw,36px);line-height:1.3;letter-spacing:-.035em}
+  html[lang="ko"] h2,html[lang="ja"] h2{font-size:clamp(29px,8vw,34px);line-height:1.3}
+  html[lang="ko"] h3,html[lang="ja"] h3{font-size:clamp(22px,6vw,25px);line-height:1.35}
+  html[lang="ko"] .hero-subtitle,html[lang="ja"] .hero-subtitle{font-size:17px;line-height:1.6}
+  html[lang="ko"] .hero-description,html[lang="ja"] .hero-description{font-size:15px;line-height:1.7}
+}
