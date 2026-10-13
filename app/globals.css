@@ -65,3 +65,15 @@
 @media(max-width:800px){.desktop-language{display:none}}
 html[lang="zh-CN"] body{font-family:"Noto Sans SC","Microsoft YaHei","PingFang SC",Arial,sans-serif}
 html[lang="zh-CN"] h1,html[lang="zh-CN"] h2,html[lang="zh-CN"] h3{font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;letter-spacing:0;line-height:1.2}
+html[lang="zh"] body{font-family:"Noto Sans SC","Microsoft YaHei","PingFang SC",Arial,sans-serif}
+html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3{font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;letter-spacing:0;line-height:1.2}
+html[lang="ko"] body{font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",Arial,sans-serif}
+html[lang="ko"] h1,html[lang="ko"] h2,html[lang="ko"] h3{font-family:"Noto Serif KR","Nanum Myeongjo",serif;letter-spacing:-.02em;line-height:1.2}
+html[lang="ja"] body{font-family:"Noto Sans JP","Yu Gothic","Hiragino Kaku Gothic ProN",Arial,sans-serif}
+html[lang="ja"] h1,html[lang="ja"] h2,html[lang="ja"] h3{font-family:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;letter-spacing:-.02em;line-height:1.2}
+html[lang="ko"] .hero h1,html[lang="ja"] .hero h1{font-size:clamp(44px,4.2vw,58px);max-width:880px}
+html[lang="ko"] .hero h1{word-break:keep-all}
+.language-switch{max-width:100%}
+.language-switch a{min-width:39px;padding-inline:9px}
+@media(max-width:960px) and (min-width:801px){.desktop-nav,.visit-cta{display:none}.mobile-toggle{display:block}}
+@media(max-width:480px){.mobile-language .language-switch{flex-wrap:wrap;white-space:normal}.mobile-language .language-switch a{min-width:58px}}

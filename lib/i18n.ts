@@ -1,9 +1,14 @@
-export type Locale = 'en' | 'zh';
+import type {Metadata} from 'next';
+import {koCopy,jaCopy} from './translations-ko-ja';
+import {absoluteUrl} from './site-url';
+
+export type Locale = 'en' | 'zh' | 'ko' | 'ja';
+export const locales:readonly Locale[] = ['en','zh','ko','ja'];
 
 export const copy = {
   en: {
     nav: {home:'Home',story:'Our story',menu:'Menu',flavours:'Our flavours',visit:'Visit Us',open:'Open navigation',main:'Main navigation',mobile:'Mobile navigation'},
-    common: {explore:'Explore our menu',story:'Our story',directions:'Get directions',reserve:'Reserve a table',locations:'Our locations',find:'Find Your Bibichik',welcome:'We can’t wait to welcome you.',hours:'Opening hours',closed:'Closed',connected:'Stay connected',hoursNote:'Check branch listings for current hours',rights:'All rights reserved.',privacy:'Privacy Policy',terms:'Terms & Conditions',skip:'Skip to content',table:'The Bibichik table'},
+    common: {explore:'Explore our menu',story:'Our story',directions:'Get directions',reserve:'Reserve a table',locations:'Our locations',find:'Find Your Bibichik',welcome:'We can’t wait to welcome you.',hours:'Opening hours',closed:'Closed',connected:'Stay connected',hoursNote:'Check branch listings for current hours',rights:'All rights reserved.',privacy:'Privacy Policy',terms:'Terms & Conditions',skip:'Skip to content',table:'The Bibichik table',footerSs2:'SS2, Petaling Jaya'},
     home: {title:'A Taste of|Nyonya Heritage',subtitle:'Familiar flavours, lovingly made for today.',description:'Discover the warmth, colour and character of Malaysian Nyonya cuisine.',tag:'Truly|Malaysian|Flavours',eyebrow:'Truly Malaysian flavours',rootsTitle:'Rooted in Heritage,|Made for Today.',rootsBody:'At Bibichik, we celebrate Nyonya traditions and the flavours we grew up with — bringing familiar Malaysian favourites to the table with warmth, character and a little modern charm.',values:[['Recipes With Roots','Flavours inspired by generations of Nyonya cooking.'],['Made for Sharing','Food that belongs in the middle of the table.'],['A Malaysian Story','A celebration of the cultures, ingredients and flavours that make Malaysia home.']]},
     preview: {eyebrow:'A table full of favourites',title:'Our Menu',view:'View full menu',categories:[['Nyonya Classics','Rich, aromatic and full of character.'],['Rice & Noodles','Comforting Malaysian favourites for any time of day.'],['Small Plates','A little bit of everything, best enjoyed together.'],['Sweet Things','Classic Malaysian treats to finish the meal.'],['Drinks','Refreshing favourites inspired by local flavours.']]},
     story: {title:'Our Story',subtitle:'A celebration of Nyonya heritage, Malaysian flavours and the simple joy of good food.',beginning:'Our beginning',beginningTitle:'Rooted in Tradition,|Made for Today.',beginningBody:['Bibichik was born from a deep appreciation for Nyonya traditions and the vibrant flavours that have shaped Malaysian cuisine.','Inspired by the recipes, stories and home-cooked meals passed down through generations, we set out to bring these familiar tastes to the table in a space that feels warm, welcoming and contemporary.','At Bibichik, heritage is not just something we remember — it’s something we cook, share and keep alive every day.'],heritage:'Our heritage',heritageTitle:'A Unique Blend|of Cultures',heritageBody:['Nyonya cuisine is a beautiful meeting of Chinese and Malay influences, created over centuries in Malaysia.','It brings together aromatic spices, fresh herbs, rich ingredients and bold flavours — resulting in dishes that are colourful, comforting and truly one of a kind.'],cards:[['Rich flavours','Layers of spices and herbs create depth and character.'],['Cultural heritage','A blend of traditions that make Malaysian cuisine unique.'],['Timeless recipes','Classic flavours, prepared with care for today.']],space:'Our space',spaceTitle:'A Place|for Everyone',spaceBody:['More than just a restaurant, Bibichik is a place to gather — for family meals, casual catch-ups and new memories.','We’ve created a space that reflects our heritage while feeling fresh and welcoming.']},
@@ -16,7 +21,7 @@ export const copy = {
   },
   zh: {
     nav: {home:'首页',story:'品牌故事',menu:'菜单',flavours:'我们的风味',visit:'到访我们',open:'打开导航菜单',main:'主导航',mobile:'手机导航'},
-    common: {explore:'探索菜单',story:'品牌故事',directions:'导航前往',reserve:'预订座位',locations:'我们的分店',find:'寻找 BiBiChik',welcome:'期待与你见面。',hours:'营业时间',closed:'休息',connected:'关注我们',hoursNote:'请查看各分店的最新营业时间',rights:'版权所有。',privacy:'隐私政策',terms:'条款与细则',skip:'跳转至主要内容',table:'BiBiChik 餐桌'},
+    common: {explore:'探索菜单',story:'品牌故事',directions:'导航前往',reserve:'预订座位',locations:'我们的分店',find:'寻找 BiBiChik',welcome:'期待与你见面。',hours:'营业时间',closed:'休息',connected:'关注我们',hoursNote:'请查看各分店的最新营业时间',rights:'版权所有。',privacy:'隐私政策',terms:'条款与细则',skip:'跳转至主要内容',table:'BiBiChik 餐桌',footerSs2:'SS2, Petaling Jaya'},
     home: {title:'娘惹传统风味',subtitle:'熟悉的味道，以现代方式用心呈现。',description:'探索马来西亚娘惹料理的温度、色彩与独特风味。',tag:'真正的|马来西亚|风味',eyebrow:'真正的马来西亚风味',rootsTitle:'传承经典，|为今天而呈现。',rootsBody:'在 BiBiChik，我们珍惜娘惹传统与陪伴我们成长的熟悉味道，并以温暖、个性与现代感重新呈现经典马来西亚风味。',values:[['源自传承的食谱','灵感来自世代相传的娘惹料理。'],['为分享而生','适合摆在餐桌中央，与大家一起分享。'],['马来西亚的味道故事','以文化、食材与风味，呈现属于马来西亚的味道。']]},
     preview: {eyebrow:'一桌美味',title:'我们的菜单',view:'查看完整菜单',categories:[['娘惹经典','浓郁芳香，独具特色。'],['饭类与面食','随时都能享用的马来西亚经典美味。'],['小食','各式美味，最适合一起分享。'],['甜点','为一餐画上甜蜜句点的马来西亚经典甜品。'],['饮品','以本地风味为灵感的清爽饮品。']]},
     story: {title:'品牌故事',subtitle:'致敬娘惹文化、马来西亚风味，以及享受美食最简单的快乐。',beginning:'我们的起点',beginningTitle:'根植传统，|为今天而呈现。',beginningBody:['BiBiChik 源于我们对娘惹传统的热爱，以及对塑造马来西亚饮食文化的丰富风味的珍视。','受到世代相传的食谱、故事与家常料理启发，我们希望将这些熟悉的味道带到餐桌上，并以温暖、亲切且现代的方式呈现。','在 BiBiChik，传承不只是记忆，更是我们每天烹煮、分享，并持续延续的味道。'],heritage:'我们的传承',heritageTitle:'多元文化的|独特融合',heritageBody:['娘惹料理融合了华人与马来文化，并在马来西亚经过数百年的发展，形成独特的饮食风貌。','香料、香草、丰富食材与鲜明风味交织在一起，造就色彩丰富、令人熟悉又独具特色的料理。'],cards:[['丰富风味','香料与香草层层交叠，创造丰富而鲜明的味道。'],['文化传承','不同文化传统的融合，造就独特的马来西亚味道。'],['经典食谱','经典风味，用心为今天重新呈现。']],space:'我们的空间',spaceTitle:'属于每个人的|相聚空间',spaceBody:['BiBiChik 不只是一家餐厅，更是家人聚餐、朋友相聚与创造新回忆的地方。','我们打造了一个既保留文化特色，又轻松、现代且亲切的空间。']},
@@ -26,10 +31,26 @@ export const copy = {
     days:['星期一','星期二','星期三','星期四','星期五','星期六','星期日'],
     alt:{home:'阳光下的餐桌上，娘惹料理盛在花纹陶瓷餐具中',story:'温暖窗光中的花瓶与书本',flavours:'花纹陶瓷碗中的香浓娘惹鸡肉料理',visit:'阳光明亮的 BiBiChik 餐厅室内空间',table:'朋友们围坐分享娘惹料理',interior:'BiBiChik 餐厅室内',contact:'陶瓷花瓶与 BiBiChik 菜单',tiffin:'花纹娘惹提盒与缤纷糕点',tiles:'娘惹花纹瓷砖与马来西亚料理书',space:'藤椅与大理石桌面的温暖用餐空间',feast:'餐桌上共享的娘惹料理、糕点与饮品'},
     meta:{description:'探索马来西亚娘惹料理的温度、色彩与独特风味。了解 BiBiChik 的故事、风味及午餐与晚餐菜单。'}
-  }
+  },
+  ko: koCopy,
+  ja: jaCopy
 } as const;
 
-export function pathFor(locale:Locale,path:string){return locale==='zh'?`/zh${path==='/'?'':path}`:path}
-export function localeFromPath(path:string):Locale{return path==='/zh'||path.startsWith('/zh/')?'zh':'en'}
+export function pathFor(locale:Locale,path:string){return `/${locale}${path==='/'?'/':`${path.replace(/\/+$/,'')}/`}`}
+export function localeFromPath(path:string):Locale {const candidate=path.split('/')[1];return locales.includes(candidate as Locale)?candidate as Locale:'en'}
 export function lines(value:string){return value.split('|')}
-export function pageMetadata(locale:Locale,title:string,path:string){return {title,description:copy[locale].meta.description,alternates:{languages:{en:pathFor('en',path),'zh-CN':pathFor('zh',path)}}}}
+const descriptions:Record<Locale,Record<string,string>>={
+  en:{'/':copy.en.meta.description,'/our-story':'Discover the Nyonya traditions, family recipes and Malaysian food culture behind BiBiChik.','/our-flavours':'Explore the spices, herbs and local ingredients that shape BiBiChik’s Malaysian Nyonya flavours.','/menu':'Browse BiBiChik’s lunch and dinner menus of Malaysian Nyonya favourites.','/menu/lunch':'Explore the original BiBiChik lunch menu, page by page.','/menu/dinner':'Explore the original BiBiChik dinner menu, page by page.','/visit-us':'Find BiBiChik at Sunway 163 Mall in Mont Kiara or SS2 in Petaling Jaya, with addresses and opening hours.','/privacy':'Read BiBiChik’s current website privacy information.','/terms':'Read the terms and website information for BiBiChik.'},
+  zh:{'/':copy.zh.meta.description,'/our-story':'了解 BiBiChik 的娘惹文化传承、家常食谱与马来西亚美食故事。','/our-flavours':'探索香料、香草与本地食材如何成就 BiBiChik 的娘惹风味。','/menu':'浏览 BiBiChik 的午餐与晚餐菜单，发现经典马来西亚娘惹料理。','/menu/lunch':'逐页浏览 BiBiChik 原版午餐菜单。','/menu/dinner':'逐页浏览 BiBiChik 原版晚餐菜单。','/visit-us':'查看 BiBiChik Sunway 163 Mall 与 SS2 分店的地址、电话和营业时间。','/privacy':'阅读 BiBiChik 网站当前的隐私说明。','/terms':'阅读 BiBiChik 的网站条款与相关说明。'},
+  ko:{'/':copy.ko.meta.description,'/our-story':'BiBiChik이 이어 가는 뇨냐 전통과 말레이시아 음식 이야기, 세대를 잇는 레시피를 만나보세요.','/our-flavours':'향신료와 허브, 현지 재료가 만드는 BiBiChik의 말레이시아 뇨냐 음식의 매력을 알아보세요.','/menu':'BiBiChik의 점심·저녁 메뉴에서 말레이시아 뇨냐 요리를 살펴보세요.','/menu/lunch':'BiBiChik의 원본 점심 메뉴를 페이지별로 살펴보세요.','/menu/dinner':'BiBiChik의 원본 저녁 메뉴를 페이지별로 살펴보세요.','/visit-us':'몬트키아라 Sunway 163 Mall과 페탈링자야 SS2의 BiBiChik 매장 위치, 연락처와 영업시간을 확인하세요.','/privacy':'BiBiChik 웹사이트의 현재 개인정보 안내를 확인하세요.','/terms':'BiBiChik 웹사이트 이용약관과 안내를 확인하세요.'},
+  ja:{'/':copy.ja.meta.description,'/our-story':'BiBiChikが大切にするニョニャの伝統、受け継がれるレシピ、マレーシア料理の物語をご紹介します。','/our-flavours':'スパイスやハーブ、地元の食材が生み出すBiBiChikのマレーシア・ニョニャ料理の魅力をご覧ください。','/menu':'BiBiChikのランチ・ディナーメニューで、マレーシアのニョニャ料理を探してみませんか。','/menu/lunch':'BiBiChikの元のランチメニューをページごとにご覧ください。','/menu/dinner':'BiBiChikの元のディナーメニューをページごとにご覧ください。','/visit-us':'モントキアラのSunway 163 Mall店とペタリンジャヤのSS2店の所在地、電話番号、営業時間をご案内します。','/privacy':'BiBiChikウェブサイトの現在のプライバシー情報をご確認ください。','/terms':'BiBiChikウェブサイトの利用規約とご案内をご確認ください。'}
+};
+
+export function languageAlternates(path:string){const entries=locales.map(locale=>[locale,absoluteUrl(pathFor(locale,path))] as const);return {...Object.fromEntries(entries),'x-default':absoluteUrl(pathFor('en',path))};}
+
+export function pageMetadata(locale:Locale,title:string,path:string):Metadata{
+  const localizedTitle=path==='/'&&locale==='ko'?'쿠알라룸푸르 뇨냐 음식 맛집 | BiBiChik 말레이시아 레스토랑':path==='/'&&locale==='ja'?'クアラルンプールのニョニャ料理レストラン | BiBiChik':`${title.replaceAll('|',' ')} | BiBiChik`;
+  const description=descriptions[locale][path]??copy[locale].meta.description;
+  const url=absoluteUrl(pathFor(locale,path));
+  return {title:{absolute:localizedTitle},description,alternates:{canonical:url,languages:languageAlternates(path)},openGraph:{title:localizedTitle,description,url,type:'website',locale},twitter:{card:'summary_large_image',title:localizedTitle,description}};
+}
