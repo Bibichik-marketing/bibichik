@@ -3,7 +3,7 @@ import {localeFromPath} from './lib/i18n';
 
 export function proxy(request:NextRequest){
   const path=request.nextUrl.pathname;
-  if(/^\/(?:$|our-story\/?$|our-flavours\/?$|menu(?:\/(?:lunch|dinner))?\/?$|visit-us\/?$|privacy\/?$|terms\/?$)/.test(path)){
+  if(/^\/(?:$|what-is-nyonya\/?$|our-story\/?$|our-flavours\/?$|menu(?:\/(?:lunch|dinner))?\/?$|visit-us\/?$|privacy\/?$|terms\/?$)/.test(path)){
     const destination=request.nextUrl.clone();
     destination.pathname=`/en${path==='/'?'/':path.endsWith('/')?path:`${path}/`}`;
     return NextResponse.redirect(destination,308);
