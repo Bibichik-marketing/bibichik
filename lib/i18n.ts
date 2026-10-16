@@ -1,9 +1,10 @@
 import type {Metadata} from 'next';
 import {koCopy,jaCopy} from './translations-ko-ja';
+import {msCopy} from './translations-ms';
 import {absoluteUrl} from './site-url';
 
-export type Locale = 'en' | 'zh' | 'ko' | 'ja';
-export const locales:readonly Locale[] = ['en','zh','ko','ja'];
+export type Locale = 'en' | 'zh' | 'ko' | 'ja' | 'ms';
+export const locales:readonly Locale[] = ['en','zh','ko','ja','ms'];
 
 export const copy = {
   en: {
@@ -33,7 +34,8 @@ export const copy = {
     meta:{description:'探索马来西亚娘惹料理的温度、色彩与独特风味。了解 BiBiChik 的故事、风味及午餐与晚餐菜单。'}
   },
   ko: koCopy,
-  ja: jaCopy
+  ja: jaCopy,
+  ms: msCopy
 } as const;
 
 export function pathFor(locale:Locale,path:string){return `/${locale}${path==='/'?'/':`${path.replace(/\/+$/,'')}/`}`}
@@ -43,7 +45,8 @@ const descriptions:Record<Locale,Record<string,string>>={
   en:{'/':copy.en.meta.description,'/what-is-nyonya':'Discover the history of Nyonya and Chinese Peranakan culture through journeys, homes, craft and food.','/our-story':'Discover the Nyonya traditions, family recipes and Malaysian food culture behind BiBiChik.','/our-flavours':'Explore the spices, herbs and local ingredients that shape BiBiChik’s Malaysian Nyonya flavours.','/menu':'Browse BiBiChik’s lunch and dinner menus of Malaysian Nyonya favourites.','/menu/lunch':'Explore the original BiBiChik lunch menu, page by page.','/menu/dinner':'Explore the original BiBiChik dinner menu, page by page.','/visit-us':'Find BiBiChik at Sunway 163 Mall in Mont Kiara or SS2 in Petaling Jaya, with addresses and opening hours.','/privacy':'Read BiBiChik’s current website privacy information.','/terms':'Read the terms and website information for BiBiChik.'},
   zh:{'/':copy.zh.meta.description,'/what-is-nyonya':'了解娘惹与土生华人文化的历史，从海上往来、家庭生活到延续至今的饮食传统。','/our-story':'了解 BiBiChik 的娘惹文化传承、家常食谱与马来西亚美食故事。','/our-flavours':'探索香料、香草与本地食材如何成就 BiBiChik 的娘惹风味。','/menu':'浏览 BiBiChik 的午餐与晚餐菜单，发现经典马来西亚娘惹料理。','/menu/lunch':'逐页浏览 BiBiChik 原版午餐菜单。','/menu/dinner':'逐页浏览 BiBiChik 原版晚餐菜单。','/visit-us':'查看 BiBiChik Sunway 163 Mall 与 SS2 分店的地址、电话和营业时间。','/privacy':'阅读 BiBiChik 网站当前的隐私说明。','/terms':'阅读 BiBiChik 的网站条款与相关说明。'},
   ko:{'/':copy.ko.meta.description,'/what-is-nyonya':'뇨냐와 중국계 페라나칸 문화의 역사를 여행과 가정, 공예와 음식의 이야기로 만나보세요.','/our-story':'BiBiChik이 이어 가는 뇨냐 전통과 말레이시아 음식 이야기, 세대를 잇는 레시피를 만나보세요.','/our-flavours':'향신료와 허브, 현지 재료가 만드는 BiBiChik의 말레이시아 뇨냐 음식의 매력을 알아보세요.','/menu':'BiBiChik의 점심·저녁 메뉴에서 말레이시아 뇨냐 요리를 살펴보세요.','/menu/lunch':'BiBiChik의 원본 점심 메뉴를 페이지별로 살펴보세요.','/menu/dinner':'BiBiChik의 원본 저녁 메뉴를 페이지별로 살펴보세요.','/visit-us':'몬트키아라 Sunway 163 Mall과 페탈링자야 SS2의 BiBiChik 매장 위치, 연락처와 영업시간을 확인하세요.','/privacy':'BiBiChik 웹사이트의 현재 개인정보 안내를 확인하세요.','/terms':'BiBiChik 웹사이트 이용약관과 안내를 확인하세요.'},
-  ja:{'/':copy.ja.meta.description,'/what-is-nyonya':'旅と暮らし、工芸と食を通して、ニョニャと中国系プラナカン文化の歴史をたどります。','/our-story':'BiBiChikが大切にするニョニャの伝統、受け継がれるレシピ、マレーシア料理の物語をご紹介します。','/our-flavours':'スパイスやハーブ、地元の食材が生み出すBiBiChikのマレーシア・ニョニャ料理の魅力をご覧ください。','/menu':'BiBiChikのランチ・ディナーメニューで、マレーシアのニョニャ料理を探してみませんか。','/menu/lunch':'BiBiChikの元のランチメニューをページごとにご覧ください。','/menu/dinner':'BiBiChikの元のディナーメニューをページごとにご覧ください。','/visit-us':'モントキアラのSunway 163 Mall店とペタリンジャヤのSS2店の所在地、電話番号、営業時間をご案内します。','/privacy':'BiBiChikウェブサイトの現在のプライバシー情報をご確認ください。','/terms':'BiBiChikウェブサイトの利用規約とご案内をご確認ください。'}
+  ja:{'/':copy.ja.meta.description,'/what-is-nyonya':'旅と暮らし、工芸と食を通して、ニョニャと中国系プラナカン文化の歴史をたどります。','/our-story':'BiBiChikが大切にするニョニャの伝統、受け継がれるレシピ、マレーシア料理の物語をご紹介します。','/our-flavours':'スパイスやハーブ、地元の食材が生み出すBiBiChikのマレーシア・ニョニャ料理の魅力をご覧ください。','/menu':'BiBiChikのランチ・ディナーメニューで、マレーシアのニョニャ料理を探してみませんか。','/menu/lunch':'BiBiChikの元のランチメニューをページごとにご覧ください。','/menu/dinner':'BiBiChikの元のディナーメニューをページごとにご覧ください。','/visit-us':'モントキアラのSunway 163 Mall店とペタリンジャヤのSS2店の所在地、電話番号、営業時間をご案内します。','/privacy':'BiBiChikウェブサイトの現在のプライバシー情報をご確認ください。','/terms':'BiBiChikウェブサイトの利用規約とご案内をご確認ください。'},
+  ms:{'/':copy.ms.meta.description,'/what-is-nyonya':'Kenali sejarah Nyonya dan budaya Peranakan Cina melalui perjalanan, kehidupan keluarga, kraf dan makanan.','/our-story':'Kenali tradisi Nyonya, resipi keluarga dan kisah masakan Malaysia di sebalik BiBiChik.','/our-flavours':'Terokai rempah, herba dan bahan tempatan yang membentuk cita rasa Nyonya BiBiChik.','/menu':'Lihat menu makan tengah hari dan makan malam BiBiChik yang menampilkan hidangan kegemaran Nyonya.','/menu/lunch':'Lihat halaman demi halaman menu makan tengah hari asal BiBiChik.','/menu/dinner':'Lihat halaman demi halaman menu makan malam asal BiBiChik.','/visit-us':'Cari BiBiChik di Sunway 163 Mall, Mont Kiara atau SS2, Petaling Jaya, serta lihat alamat dan waktu operasi.','/privacy':'Baca maklumat privasi semasa laman web BiBiChik.','/terms':'Baca terma dan maklumat laman web BiBiChik.'}
 };
 
 export function languageAlternates(path:string){const entries=locales.map(locale=>[locale,absoluteUrl(pathFor(locale,path))] as const);return {...Object.fromEntries(entries),'x-default':absoluteUrl(pathFor('en',path))};}

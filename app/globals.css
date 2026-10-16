@@ -84,6 +84,7 @@ html[lang="ko"] .hero h1{word-break:keep-all}
   .mobile-language{margin-top:12px;padding-top:18px;border-top:1px solid #a9c8bf}
   .mobile-language .language-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;white-space:normal;border-radius:20px}
   .mobile-language .language-switch a{min-width:0;width:100%;min-height:44px;padding:10px 6px}
+  .mobile-language .language-switch a:nth-child(3){grid-column:1 / -1}
 }
 @media(max-width:480px){
   .header-inner{gap:12px}
