@@ -2,7 +2,7 @@
 const configuredUrl = process.env.SITE_URL?.trim();
 export const siteOrigin = configuredUrl
   ? new URL(configuredUrl).origin
-  : 'http://localhost:3000';
+  : 'https://bibichik.com';
 
 export function absoluteUrl(path: string) {
   return new URL(path, `${siteOrigin}/`).toString();
