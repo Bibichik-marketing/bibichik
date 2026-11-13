@@ -13,7 +13,7 @@ export function restaurantStructuredData(){
       name:'BiBiChik Sunway 163 Mall',url:absoluteUrl('/en/visit-us/'),
       telephone:'+60 11-6214 7497',
       address:{'@type':'PostalAddress',streetAddress:'LG1-11 & 12, Sunway 163 Mall, 8, Jalan Kiara, Mont Kiara',postalCode:'50480',addressLocality:'Kuala Lumpur',addressRegion:'Wilayah Persekutuan Kuala Lumpur',addressCountry:'MY'},
-      openingHoursSpecification:[{'@type':'OpeningHoursSpecification',dayOfWeek:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],opens:'10:00',closes:'22:30'}],
+      openingHoursSpecification:[{'@type':'OpeningHoursSpecification',dayOfWeek:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],opens:'10:00',closes:'22:00'}],
       servesCuisine:['Malaysian','Nyonya','Peranakan'],menu:absoluteUrl('/en/menu/'),sameAs,image:absoluteUrl('/assets/location-one.webp')
     },
     {
