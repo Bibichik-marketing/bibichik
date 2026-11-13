@@ -39,7 +39,7 @@ description:'Discover Malaysian Nyonya and Peranakan cuisine at BiBiChik, with r
   ms: msCopy
 } as const;
 
-export function pathFor(locale:Locale,path:string){return `/${locale}${path==='/'?'/':`${path.replace(/\/+$/,'')}/`}`}
+export function pathFor(locale:Locale,path:string){const normalized=path.replace(/\/+$/,'');if(normalized==='/menu/163'&&locale!=='ja'&&locale!=='ko')path='/menu';if((normalized==='/menu/lunch'||normalized==='/menu/dinner')&&(locale==='ja'||locale==='ko'))path='/menu/163';return `/${locale}${path==='/'?'/':`${path.replace(/\/+$/,'')}/`}`}
 export function localeFromPath(path:string):Locale {const candidate=path.split('/')[1];return locales.includes(candidate as Locale)?candidate as Locale:'en'}
 export function lines(value:string){return value.split('|')}
 const descriptions:Record<Locale,Record<string,string>>={
