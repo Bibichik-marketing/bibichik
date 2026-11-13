@@ -221,3 +221,5 @@ html[lang="ja"] .history-hero h1,html[lang="ja"] .history-chapter h2{line-break:
 .branch-menu{margin-top:54px}.branch-menu>h2{text-align:center;font-size:32px}.books-single{grid-template-columns:minmax(0,440px);justify-content:center}.ss2-book-image{width:100%;max-width:360px;margin:auto;box-shadow:0 14px 30px #214f5020;transition:transform .3s}.menu-book-card:hover .ss2-book-image{transform:translateY(-6px)}
 
 .book-163-multilingual .paper-page{aspect-ratio:751.181/907.087}
+
+@media(min-width:1101px){.desktop-nav{gap:20px}.header-inner{gap:18px}.visit-cta{white-space:nowrap;flex-shrink:0}.desktop-nav a{white-space:nowrap}}
