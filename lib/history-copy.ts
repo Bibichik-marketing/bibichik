@@ -10,7 +10,7 @@ function chapters(rows:readonly (readonly [string,string,readonly string[],strin
 export const historyCopy:Record<Locale,HistoryCopy>={
   en:{
     title:'What is Nyonya?',subtitle:'A living history shaped by journeys, homes and the table.',
-    intro:'A Nyonya dish can tell a story longer than its list of ingredients. Its flavours carry memories of family kitchens and centuries of exchange across Southeast Asia. To understand the food, we begin with the people and the name.',
+     intro:'A Nyonya dish can tell a story longer than its list of ingredients. Rooted in Peranakan heritage, Nyonya cuisine reflects generations of Chinese and local Southeast Asian influences. Its flavours carry memories of family kitchens and centuries of cultural exchange. To understand the food, we begin with the people and the name.',
     explore:'Explore the chapters',
     chapters:chapters([
       ['01 / A name and an identity','What does Nyonya mean?',['Nyonya generally refers to a woman of the Chinese Peranakan community; Baba is a corresponding term for a man. Chinese Peranakans are part of a wider Peranakan world, which includes communities of varied ancestry and local heritage.','Nyonya is therefore more than the name of a cuisine. It opens a window onto languages, customs, craft and food shaped by life between cultures.'],'Peranakan floral tiles and books'],
