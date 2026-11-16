@@ -52,9 +52,113 @@ const descriptions:Record<Locale,Record<string,string>>={
 
 export function languageAlternates(path:string){const entries=locales.map(locale=>[locale,absoluteUrl(pathFor(locale,path))] as const);return {...Object.fromEntries(entries),'x-default':absoluteUrl(pathFor('en',path))};}
 
+
+type SeoOverride = {
+  title?: string;
+  description?: string;
+};
+
+const seoOverrides: Partial<Record<Locale, Record<string, SeoOverride>>> = {
+  zh: {
+    '/': {
+      description: '在 BiBiChik 探索马来西亚娘惹与土生华人料理。欢迎莅临 SS2 八打灵再也及 Mont Kiara Sunway 163，感受传统风味与饮食文化。'
+    },
+    '/what-is-nyonya': {
+      title: '什么是娘惹？土生华人历史与饮食文化',
+      description: '了解娘惹与峇峇的含义，探索土生华人的历史、传统及娘惹料理在东南亚的发展。'
+    },
+    '/our-story': {
+      title: '品牌故事 – 娘惹文化与传统',
+      description: '认识 BiBiChik 的品牌故事，探索娘惹传统、家庭食谱和马来西亚饮食文化。'
+    },
+    '/our-flavours': {
+      title: '娘惹料理 – 香料、食材与传统风味',
+      description: '探索娘惹料理中的香料、香草与本地食材，了解丰富多彩的马来西亚娘惹风味。'
+    },
+    '/visit-us': {
+      title: 'BiBiChik 分店 – SS2 与 Mont Kiara',
+      description: '查找 BiBiChik 位于 SS2 八打灵再也及 Mont Kiara Sunway 163 Mall 的餐厅地址、营业时间和联系方式。'
+    }
+  },
+  ms: {
+    '/': {
+      title: 'Restoran Nyonya di PJ & Mont Kiara',
+      description: 'Nikmati masakan Nyonya dan Peranakan Malaysia di BiBiChik, dengan cawangan di SS2, Petaling Jaya dan Sunway 163, Mont Kiara.'
+    },
+    '/what-is-nyonya': {
+      title: 'Apa Itu Nyonya? Sejarah & Masakan Peranakan',
+      description: 'Ketahui maksud Nyonya dan Baba serta terokai sejarah, budaya dan warisan masakan Peranakan di Asia Tenggara.'
+    },
+    '/our-story': {
+      title: 'Kisah BiBiChik – Warisan & Tradisi Nyonya',
+      description: 'Kenali kisah BiBiChik, tradisi Nyonya, resipi keluarga dan warisan makanan Malaysia.'
+    },
+    '/our-flavours': {
+      title: 'Masakan Nyonya – Rempah & Cita Rasa',
+      description: 'Terokai rempah, herba dan bahan tempatan yang membentuk cita rasa unik masakan Nyonya Malaysia.'
+    },
+    '/visit-us': {
+      title: 'Lokasi BiBiChik – SS2 & Mont Kiara',
+      description: 'Cari alamat, waktu operasi dan maklumat hubungan BiBiChik di SS2, Petaling Jaya dan Sunway 163 Mall, Mont Kiara.'
+    }
+  },
+  ko: {
+    '/': {
+      description: 'BiBiChik에서 말레이시아 뇨냐와 페라나칸 요리를 만나보세요. 페탈링자야 SS2와 몬트키아라 Sunway 163 매장을 소개합니다.'
+    },
+    '/what-is-nyonya': {
+      title: '뇨냐란? 페라나칸 역사와 음식 문화',
+      description: '뇨냐와 바바의 의미부터 동남아시아 페라나칸 공동체의 역사, 전통과 뇨냐 음식 문화까지 알아보세요.'
+    },
+    '/our-story': {
+      title: 'BiBiChik 이야기 – 뇨냐 전통과 문화',
+      description: 'BiBiChik의 이야기와 말레이시아 뇨냐 전통, 가족 레시피 및 음식 문화를 만나보세요.'
+    },
+    '/our-flavours': {
+      title: '뇨냐 요리 – 향신료와 전통의 맛',
+      description: '말레이시아 뇨냐 요리의 풍미를 만드는 향신료, 허브와 현지 식재료를 알아보세요.'
+    },
+    '/visit-us': {
+      title: 'BiBiChik 매장 안내 – SS2 & 몬트키아라',
+      description: '페탈링자야 SS2와 몬트키아라 Sunway 163 Mall에 위치한 BiBiChik의 주소, 영업시간 및 연락처를 확인하세요.'
+    }
+  },
+  ja: {
+    '/': {
+      description: 'BiBiChikでマレーシアのニョニャ料理とプラナカン料理を。ペタリンジャヤSS2とモントキアラのSunway 163に店舗があります。'
+    },
+    '/what-is-nyonya': {
+      title: 'ニョニャとは？プラナカンの歴史と食文化',
+      description: 'ニョニャとババの意味から、東南アジアのプラナカン文化、歴史、ニョニャ料理の成り立ちまで紹介します。'
+    },
+    '/our-story': {
+      title: 'BiBiChikの物語 – ニョニャの伝統と文化',
+      description: 'BiBiChikの物語を通じて、ニョニャの伝統、家庭のレシピ、マレーシアの食文化をご紹介します。'
+    },
+    '/our-flavours': {
+      title: 'ニョニャ料理 – スパイスと伝統の味',
+      description: 'マレーシアのニョニャ料理を特徴づけるスパイス、ハーブ、地元の食材と豊かな味わいをご紹介します。'
+    },
+    '/visit-us': {
+      title: 'BiBiChik店舗案内 – SS2・モントキアラ',
+      description: 'ペタリンジャヤSS2とモントキアラのSunway 163 MallにあるBiBiChikの住所、営業時間、連絡先をご案内します。'
+    }
+  }
+};
+
 export function pageMetadata(locale:Locale,title:string,path:string):Metadata{
-  const localizedTitle=path==='/'&&locale==='ko'?'쿠알라룸푸르 뇨냐 음식 맛집 | BiBiChik 말레이시아 레스토랑':path==='/'&&locale==='ja'?'クアラルンプールのニョニャ料理レストラン | BiBiChik':`${title.replaceAll('|',' ')} | BiBiChik`;
-  const description=descriptions[locale][path]??copy[locale].meta.description;
+  const override = seoOverrides[locale]?.[path];
+  const localizedTitle = override?.title
+    ? `${override.title} | BiBiChik`
+    : path === '/' && locale === 'ko'
+      ? '쿠알라룸푸르 뇨냐 음식 맛집 | BiBiChik 말레이시아 레스토랑'
+      : path === '/' && locale === 'ja'
+        ? 'クアラルンプールのニョニャ料理レストラン | BiBiChik'
+        : `${title.replaceAll('|', ' ')} | BiBiChik`;
+  const description =
+    override?.description ??
+    descriptions[locale][path] ??
+    copy[locale].meta.description;
   const url=absoluteUrl(pathFor(locale,path));
   return {title:{absolute:localizedTitle},description,alternates:{canonical:url,languages:languageAlternates(path)},openGraph:{title:localizedTitle,description,url,type:'website',locale},twitter:{card:'summary_large_image',title:localizedTitle,description}};
 }
