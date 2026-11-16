@@ -25,5 +25,37 @@ export const locations:Location[]=[
 ];
 const ss2ReservationUrl='https://reservation.umai.io/en/widget/bibichik-restaurant?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAac_v_ZMbOEYNjcNa4ZqeB9jmFk-uSBsYwyc1oC3ZaR69wanZorcKC-K_dt8Ag_aem_GJCKfpSOLj1eOk9TKor-_A';
 const translatedHours:Record<Locale,Record<string,string>>={en:{},zh:{'10 am–10 pm':'上午10点–晚上10点','11 am–3 pm':'上午11点–下午3点','5:30–10:30 pm':'下午5:30–晚上10:30'},ko:{'10 am–10 pm':'오전 10:00–오후 10:00','11 am–3 pm':'오전 11:00–오후 3:00','5:30–10:30 pm':'오후 5:30–10:30'},ja:{'10 am–10 pm':'10:00–22:00','11 am–3 pm':'11:00–15:00','5:30–10:30 pm':'17:30–22:30'},ms:{'10 am–10 pm':'10 pagi–10 malam','11 am–3 pm':'11 pagi–3 petang','5:30–10:30 pm':'5:30 petang–10:30 malam'}};
-export function Locations({compact=false,locale='en'}:{compact?:boolean,locale?:Locale}){const c=copy[locale];return <section className="blue section" id="locations"><div className="container"><div className="section-heading"><div><p className="eyebrow">{c.common.locations}</p><h2>{c.common.find}</h2></div><p>{compact||locale==='en'?c.common.welcome:c.visit.locationBody}</p></div><div className="location-grid">{locations.map(l=><article className="location-card" key={l.name}><Image src={l.image} alt={c.alt.interior} width={1570} height={710} sizes="(max-width: 800px) 100vw, 50vw"/><div><h3>{l.name}</h3><p>{l.address}</p><p><a href={`tel:+60${l.phone.replace(/\D/g,'').slice(1)}`}>{l.phone}</a></p>{l.openingHours&&<div className="location-hours"><h4>{c.common.hours}</h4><dl>{l.openingHours.map(({day,sessions})=><div key={day}><dt>{c.days[['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'].indexOf(day)]}</dt><dd>{sessions.length?sessions.map(time=><span key={time}>{translatedHours[locale][time]||time}</span>):c.common.closed}</dd></div>)}</dl></div>}<a className="button secondary" href={l.mapUrl} target="_blank" rel="noopener noreferrer">{c.common.directions}</a>{!compact&&l.name==='BiBiChik SS2'&&<a className="button reservation-button" href={ss2ReservationUrl} target="_blank" rel="noopener noreferrer">{c.common.reserve}</a>}</div></article>)}</div></div></section>}
+const locationSeo: Record<Locale, { ss2: string; sunway: string }> = {
+  en: {
+    ss2: 'Discover Malaysian Nyonya and Peranakan cuisine at BiBiChik SS2, a Nyonya restaurant in SS2, Petaling Jaya. Find our address, opening hours and directions below.',
+    sunway: 'Discover Malaysian Nyonya and Peranakan cuisine at BiBiChik Sunway 163 Mall, located in Mont Kiara, Kuala Lumpur. Find our address, opening hours and directions below.'
+  },
+  zh: {
+    ss2: 'BiBiChik SS2 位于八打灵再也 Petaling Jaya，是一家提供马来西亚娘惹与土生华人传统料理的餐厅。欢迎查看分店地址、营业时间及导航路线。',
+    sunway: 'BiBiChik Sunway 163 Mall 位于吉隆坡 Mont Kiara，提供马来西亚娘惹与土生华人传统料理。欢迎查看分店地址、营业时间及导航路线。'
+  },
+  ms: {
+    ss2: 'Nikmati masakan Nyonya dan Peranakan Malaysia di BiBiChik SS2, sebuah restoran Nyonya di SS2, Petaling Jaya. Semak alamat, waktu operasi dan arah ke restoran kami.',
+    sunway: 'Nikmati masakan Nyonya dan Peranakan Malaysia di BiBiChik Sunway 163 Mall, Mont Kiara, Kuala Lumpur. Semak alamat, waktu operasi dan arah ke restoran kami.'
+  },
+  ko: {
+    ss2: '페탈링자야 SS2에 위치한 BiBiChik SS2에서 말레이시아 뇨냐 및 페라나칸 요리를 즐겨보세요. 매장 주소, 영업시간과 오시는 길을 확인하세요.',
+    sunway: '쿠알라룸푸르 몬트키아라 Sunway 163 Mall에 위치한 BiBiChik에서 말레이시아 뇨냐 및 페라나칸 요리를 만나보세요. 매장 주소, 영업시간과 오시는 길을 확인하세요.'
+  },
+  ja: {
+    ss2: 'ペタリンジャヤのSS2にあるBiBiChik SS2で、マレーシアのニョニャ料理とプラナカン料理をお楽しみください。住所、営業時間、アクセスをご案内します。',
+    sunway: 'クアラルンプールのモントキアラ、Sunway 163 MallにあるBiBiChikで、マレーシアのニョニャ料理とプラナカン料理をお楽しみください。住所、営業時間、アクセスをご案内します。'
+  }
+};
+export function Locations({compact=false,locale='en'}:{compact?:boolean,locale?:Locale}){const c=copy[locale];return <section className="blue section" id="locations"><div className="container"><div className="section-heading"><div><p className="eyebrow">{c.common.locations}</p><h2>{c.common.find}</h2></div><p>{compact||locale==='en'?c.common.welcome:c.visit.locationBody}</p></div><div className="location-grid">{locations.map(l=><article className="location-card" key={l.name}><Image src={l.image} alt={c.alt.interior} width={1570} height={710} sizes="(max-width: 800px) 100vw, 50vw"/><div>
+<h3>{l.name}</h3>
+{!compact && (
+  <p>
+    {locationSeo[locale][
+      l.name === 'BiBiChik SS2' ? 'ss2' : 'sunway'
+    ]}
+  </p>
+)}
+<p>{l.address}</p>
+<p><a href={`tel:+60${l.phone.replace(/\D/g,'').slice(1)}`}>{l.phone}</a></p>{l.openingHours&&<div className="location-hours"><h4>{c.common.hours}</h4><dl>{l.openingHours.map(({day,sessions})=><div key={day}><dt>{c.days[['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'].indexOf(day)]}</dt><dd>{sessions.length?sessions.map(time=><span key={time}>{translatedHours[locale][time]||time}</span>):c.common.closed}</dd></div>)}</dl></div>}<a className="button secondary" href={l.mapUrl} target="_blank" rel="noopener noreferrer">{c.common.directions}</a>{!compact&&l.name==='BiBiChik SS2'&&<a className="button reservation-button" href={ss2ReservationUrl} target="_blank" rel="noopener noreferrer">{c.common.reserve}</a>}</div></article>)}</div></div></section>}
 export function Footer(){const path=usePathname(),locale=localeFromPath(path),c=copy[locale];return <footer><div className="container footer-grid"><Link href={pathFor(locale,'/')} className="brand"><img src="/assets/bibichik-logo.png" alt={`BiBiChik — ${c.home.title.replaceAll("|"," ")}`}/></Link><div><h4>{c.common.locations}</h4><Link href={pathFor(locale,'/visit-us')+'#locations'}>Sunway 163 Mall</Link><br/><Link href={pathFor(locale,'/visit-us')+'#locations'}>{c.common.footerSs2}</Link></div><div><h4>{c.common.hours}</h4><p>{c.common.hoursNote}</p></div><div><h4>{c.common.connected}</h4><a href="https://www.instagram.com/bibichikmy/" target="_blank" rel="noopener noreferrer">Instagram</a><br/><a href="https://www.facebook.com/BibiChikSdnBhd/" target="_blank" rel="noopener noreferrer">Facebook</a></div></div><div className="container footer-bottom"><p>© {new Date().getFullYear()} BiBiChik. {c.common.rights}</p><div><Link href={pathFor(locale,'/privacy')}>{c.common.privacy}</Link><Link href={pathFor(locale,'/terms')}>{c.common.terms}</Link></div></div><Motif className="footer-motif"/></footer>}
