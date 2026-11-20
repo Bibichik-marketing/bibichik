@@ -1,2 +1,3 @@
+import LegalPage from '@/components/legal-page';
 import {pageMetadata} from '@/lib/i18n';
-export const metadata=pageMetadata('en','Terms & Conditions','/terms');export default function Terms(){return <main id="main" className="container section legal"><p className="eyebrow">Website information</p><h1>Terms & Conditions</h1><p>This website is a preview. Menu pages reproduce the supplied lunch and dinner menus. Please confirm current availability and pricing with the restaurant before ordering.</p></main>}
+export const metadata=pageMetadata('en','Terms & Conditions','/terms');export default function Page(){return <LegalPage locale="en" kind="terms"/>}

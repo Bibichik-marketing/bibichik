@@ -1,2 +1,3 @@
+import LegalPage from '@/components/legal-page';
 import {pageMetadata} from '@/lib/i18n';
-export const metadata=pageMetadata('en','Privacy Policy','/privacy');export default function Privacy(){return <main id="main" className="container section legal"><p className="eyebrow">Website information</p><h1>Privacy Policy</h1><p>This website is a preview. Online enquiries and reservations are not currently enabled. Information entered into the contact fields is not sent or saved by the website.</p><p>The restaurant’s full privacy policy and privacy contact will be published here when confirmed.</p></main>}
+export const metadata=pageMetadata('en','Privacy Policy','/privacy');export default function Page(){return <LegalPage locale="en" kind="privacy"/>}
